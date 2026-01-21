@@ -1,14 +1,28 @@
-let a = "" + 1 + 0; // 10
-let b = "" - 1 + 0; // -1
-let c = true + false; // 1
-let d = 6 / "3"; // 2
-let e = "2" * "3"; // 6
-let f = 4 + 5 + "px"; // 9px
-let g = "$" + 4 + 5; // $45
-let h = "4" - 2; // 2
-let i = "4px" - 2; // NaN
-let j = "  -9  " + 5; //   -9  5
-let k = "  -9  " - 5; // -14
-let l = null + 1; // 1
-let m = undefined + 1; // NaN
-let n = " \t \n" - 2; // 2
+// Problem
+let a = "1"; // prompt("First number?", 1);
+let b = "2"; // prompt("Second number?", 2);
+
+alert(a + b); // 12
+
+// My solution
+//Ensure the numbers are recognised as numbers and not as strings
+
+let a = Number("1");
+let b = Number("2");
+let c = prompt("First number?", a);
+let d = prompt("Second number?", b);
+alert(a + b); // 3
+
+// Alternative solution 1
+// Add a unary plus to convert the string into a number on the prompt
+let a = +prompt("First number?", 1);
+let b = +prompt("Second number?", 2);
+
+alert(a + b); // 3
+
+// Alternative solution 2
+// Add a unary plus to convert the string into a number in the equation
+let a = prompt("First number?", 1);
+let b = prompt("Second number?", 2);
+
+alert(+a + +b); // 3
