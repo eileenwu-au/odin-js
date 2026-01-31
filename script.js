@@ -1,36 +1,34 @@
-// Check the login exercise from https://javascript.info/logical-operators
+const select = document.querySelector("select");
+const list = document.querySelector("ul");
+const h1 = document.querySelector("h1");
 
-// Step 1: prompt user for username
-let username = prompt("Enter your username");
-let password;
+select.addEventListener("change", () => {
+  const choice = select.value;
+  createCalendar(choice);
+});
 
-// Step 2: check username input against conditions
-if (username == "Admin") {
-    let password = prompt("Enter your password");
-    // Step 3: check password input against conditions
-    if (password == "TheMaster") {
-        alert("Welcome!");
-    }
+function createCalendar(month) {
+  let days = 31;
 
-    else if (password == null || password == "") {
-        console.log(password); // ! Displays the characters entered the first time
-        alert("Cancelled"); 
-    }
+  // ADD CONDITIONAL HERE
+  if (select.value == "February") {
+    days = 28;
+  }
+  else if (select.value == "April" || select.value =="June" || select.value == "September" || select.value == "November") {
+    days = 30;
+  }
+  else {
+    days = 31;
+  }
 
-    else {
-        alert("Wrong password");
-        console.log(password)
-    }
+  list.textContent = "";
+  h1.textContent = month;
+  for (let i = 1; i <= days; i++) {
+    const listItem = document.createElement("li");
+    listItem.textContent = i;
+    list.appendChild(listItem);
+  }
 }
 
-else if (username == undefined || username == "") {
-    alert("Cancelled");
-}
-
-else {
-    alert("I don't know you");
-}
-
-
-// && returns the first falsy value 
-// || returns the first truthy value
+select.value = "January";
+createCalendar("January");
