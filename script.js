@@ -1,34 +1,33 @@
 const select = document.querySelector("select");
-const list = document.querySelector("ul");
-const h1 = document.querySelector("h1");
+const html = document.querySelector("html");
+let bgColor;
+let textColor;
 
 select.addEventListener("change", () => {
   const choice = select.value;
-  createCalendar(choice);
+
+  // ADD SWITCH STATEMENT
+  switch (choice) {
+    case "white":
+      update("white", "black");
+      break;
+    case "black":
+      update("black", "white");
+      break;
+    case "purple":
+      update("purple","white");
+      break;
+    case "yellow":
+      update("black", "yellow");
+      break;
+    case "psychedelic":
+      update("aqua","yellow");
+      break;
+  }
+  
 });
 
-function createCalendar(month) {
-  let days = 31;
-
-  // ADD CONDITIONAL HERE
-  if (select.value == "February") {
-    days = 28;
-  }
-  else if (select.value == "April" || select.value =="June" || select.value == "September" || select.value == "November") {
-    days = 30;
-  }
-  else {
-    days = 31;
-  }
-
-  list.textContent = "";
-  h1.textContent = month;
-  for (let i = 1; i <= days; i++) {
-    const listItem = document.createElement("li");
-    listItem.textContent = i;
-    list.appendChild(listItem);
-  }
+function update(bgColor, textColor) {
+  html.style.backgroundColor = bgColor;
+  html.style.color = textColor;
 }
-
-select.value = "January";
-createCalendar("January");
